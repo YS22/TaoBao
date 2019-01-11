@@ -9,4 +9,4 @@
 -	scrapy crawl goods_spider -a keyword=关键字 -a pagenum=爬取页数
 
 ####	程序流程
--	1.启动命令接受传递的2个参数到淘宝网爬取相应关键字商品数据完成爬取要求的页数->设计pipeline保存数据到MySql数据库# TaoBao
+-	1.启动命令接受传递的2个参数到淘宝网爬取相应关键字商品数据完成爬取要求的页数->设计pipeline保存数据到MySql数据库
