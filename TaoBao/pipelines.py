@@ -9,7 +9,7 @@ from pymysql import connect
 
 class TaobaoPipeline(object):
     def __init__(self):
-        self.con = connect(host='193.112.133.62', user='scrapy_test', password='123456', db='scrapy_test', charset='utf8')
+        self.con = connect(host='xxx.xxx.xxx.xxx', user='xxx', password='xxxx', db='xxxx', charset='utf8')
         self.obj = self.con.cursor()  # 游标对象
 
     def process_item(self, item, spider):

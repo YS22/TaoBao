@@ -8,6 +8,9 @@ import json
 import re
 
 class TaobaoSpider(scrapy.Spider):
+
+	""" 爬取淘宝移动端商品数据存入MySQL""" 
+
 	name = 'goods_spider'
 	allowed_domains = ["acs.m.taobao.com"]	
 	tb_cookies = {"uc1":"cookie14=UoTYMb63bkLyoA%3D%3D&lng=zh_CN","t":"9e4af16f0edb4bcd2ba4c08fb1f0d539","csg":"88e86296","cna":"RfeKFDGyMH8CAcFwhT67Izg7","thw":"cn","skt":"fca4bcb533158ddd","l":"bBryAjPgvMrVwAjCBOCanurza77OSBRYYuPzaNbMi_5CO6Ts0__OlVhisF96V6CR_58B45FoCRp9-etUZ","uc3":"id2=&nk2=&lg2=","sn":"%E6%B7%B1%E5%9C%B3%E5%B8%82%E8%BE%89%E5%BD%A9%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%3A%E6%9B%8C%E8%B5%9F","_mw_us_time_":"1547187075929","v":"0","unb":"4161981099","_m_h5_tk":"592bf7291d6e6288cd6a9f00b254f43a_1547196798137","x":"2777370312","_m_h5_tk_enc":"69e70465943c3a16e817221e02967f6b","tracknick":"","isg":"BEJCObHEqiUbAbZ5j7cAFldCn0GkE0YtzRjMZoxbbrVg3-JZdKOWPciNiVWjlL7F","apushb6629951a76e6744507c9a12fe891b0e":"%7B%22ts%22%3A1547187080680%2C%22parentId%22%3A1547187077675%7D","_tb_token_":"51eeb365eb855","cookie2":"1dff156389806f616dc38346683011a0"}
@@ -23,6 +26,7 @@ class TaobaoSpider(scrapy.Spider):
 	def start_requests(self):
 
 		""" 爬取数据 """
+
 		keyword= getattr(self, 'argdata', None) 
 		pagenum= getattr(self, 'pagenum', None) 
 		pagenum = int(pagenum)+1
@@ -59,6 +63,7 @@ class TaobaoSpider(scrapy.Spider):
 	def parse(self,response):
 
 		""" 处理数据 """
+		
 		str_json = response.body.decode(encoding='utf-8')
 		resp_json = json.loads(re.match(".*?({.*}).*", str_json, re.S).group(1))
 		
